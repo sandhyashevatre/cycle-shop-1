@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.talentsprint.cycleshop.business.LoginBody;
+import com.talentsprint.cycleshop.dto.TokenDTO;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -33,7 +34,7 @@ public class APIAuthController {
     
     
     @PostMapping("/token")
-    public String token(@RequestBody LoginBody loginBody) {
+    public TokenDTO token(@RequestBody LoginBody loginBody) {
         Instant now = Instant.now();
         long expiry = 3600L;
         var username = loginBody.getUsername();
@@ -53,7 +54,11 @@ public class APIAuthController {
 				.claim("scope", scope)
 				.build();
 
-        return this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+        TokenDTO token = new TokenDTO();
+
+        token.setToken(this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue());
+
+        return token;
     }
 
 }

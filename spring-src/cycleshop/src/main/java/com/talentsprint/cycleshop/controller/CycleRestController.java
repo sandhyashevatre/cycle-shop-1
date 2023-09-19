@@ -22,8 +22,8 @@ import com.talentsprint.cycleshop.exception.InvalidReturnCountException;
 import com.talentsprint.cycleshop.service.CycleService;
 
 @RestController
-//@CrossOrigin(origins = {"http://localhost:4200", "http://127.0.0.1:4200"})
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:4200", "http://127.0.0.1:4200"})
+
 @RequestMapping("/api/cycles")
 public class CycleRestController {
 
@@ -81,7 +81,6 @@ public class CycleRestController {
     	}
     	
     }
-
     @PostMapping("/{id}/restock")
     public ResponseEntity<String> restockCycle(
     		@RequestBody CycleJsonInputIdCount IdCount) {
@@ -99,9 +98,9 @@ public class CycleRestController {
     public ResponseEntity<List<Cycle>> listAvailableCycles(Authentication authentication) {
 //    	Jwt jwt = (Jwt) authentication.getPrincipal();
 //        System.out.println(jwt.getClaimAsString("scope"));
-    	UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-    	System.out.println(userDetails.getUsername());
-    	System.out.println("Get Request");
+    	//UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+    	//System.out.println(userDetails.getUsername());
+    	//System.out.println("Get Request");
 //    	return ResponseEntity.ok(cycleService.listAvailableCycles());
     	return ResponseEntity.ok(cycleService.listCycles());
     }

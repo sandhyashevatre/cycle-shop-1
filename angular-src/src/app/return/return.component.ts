@@ -37,6 +37,8 @@ export class ReturnComponent {
     this.returnData.count = parseInt(cycleCount);
     this.cycleService.returnCycle(this.returnData).subscribe(
       (response) => {
+        console.log("response headers below");
+        console.log(response)
         this.returnResult = 'Cycle returned successfully.';
         this.ngOnInit();
       },

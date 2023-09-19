@@ -37,10 +37,11 @@ export class CycleService {
 
   listAvailableCycles(): Observable<CycleRecord[]> {
     // this.tokenKey = this.getToken();
-    console.log(this.getToken());
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
-    
-    return this.http.get<CycleRecord[]>(`${this.apiUrl}/list-data`,{headers : headers,responseType :'json'});
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token') 
+    });
+    console.log(localStorage.getItem('token'));
+    return this.http.get<CycleRecord[]>(`${this.apiUrl}/list-data`,{headers : headers});
   }
 
   saveToken(token: string) {

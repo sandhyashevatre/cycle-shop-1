@@ -42,6 +42,9 @@ import com.talentsprint.cycleshop.service.CustomUserDetailsService;
 @EnableWebSecurity
 public class BasicConfiguration {
 
+    @Autowired
+    private CorsConfig corsConfig;
+
     @Value("${jwt.public.key}")
 	RSAPublicKey key;
 
@@ -61,14 +64,14 @@ public class BasicConfiguration {
         return userDetailsService;
     }
 
-    
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
             .csrf(csrf -> csrf.disable())
+            .cors(cors -> cors.configurationSource(corsConfig))
             .authorizeHttpRequests((requests) -> requests
-//            .requestMatchers("/register", "/api/auth/token", "/api/cycles/*/*", "/api/cycles/*").permitAll()
+           //.requestMatchers("/register", "/api/auth/token", "/api/cycles/*/*", "/api/cycles/**").permitAll()
             .requestMatchers("/register","/api/auth/token").permitAll()
             .anyRequest().authenticated())
             .logout(withDefaults())

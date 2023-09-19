@@ -1,15 +1,26 @@
-<!-- login.component.html -->
-<form (ngSubmit)="onSubmit()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="username" required>
-  
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="password" required>
-  
-    <button type="submit">Login</button>
-  </form>
-  
-  <div *ngIf="loginError" class="error-message">
-    Incorrect username or password. Please try again.
-  </div>
-  
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <h3>Login Form</h3>
+<label for="username">Username: </label>
+<input type="text" name="username" id="username" [(ngModel)]="username">
+<br>
+<label for="password">Password: </label>
+<input type="password" name="password" id="password" [(ngModel)]="password">
+<br>
+<button type="button" (click)="login()">Login</button>
+</body>
+</html>
