@@ -1,0 +1,22 @@
+<h1>List of Available Cycles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Brand</th>
+      <th>Stock</th>
+      <th>Num Borrowed</th>
+      <th>Num Available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cycle of cycles">
+      <td>{{ cycle.id }}</td>
+      <td>{{ cycle.brand }}</td>
+      <td>{{ cycle.stock }}</td>
+      <td>{{ cycle.numBorrowed }}</td>
+      <td>{{ cycle.numAvailable }}</td>
+    </tr>
+  </tbody>
+</table>

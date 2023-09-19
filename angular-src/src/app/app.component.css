@@ -1,0 +1,21 @@
+/* Style the container */
+.navbar {
+    background-color: #1976d2;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    margin-top: 5rem;
+  }
+  
+  /* Style the links within the .navbar */
+  .navbar > a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+  
+  /* Style the links on hover */
+  .navbar > a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,27 @@
+<!-- return.component.html -->
+<div>
+  <h2>Return Cycles</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Stock</th>
+        <th>Num Borrowed</th>
+        <th>Count to Return</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cycle of cycles">
+        <td>{{ cycle.id }}</td>
+        <td>{{ cycle.brand }}</td>
+        <td>{{ cycle.stock }}</td>
+        <td>{{ cycle.numBorrowed }}</td>
+        <!-- <td><input type="number" [(ngModel)]="cycle.countToReturn"></td> -->
+        <td><input type="number" #count required [defaultValue]="1"></td>
+        <td><button (click)="returnCycle(cycle.id,count.value)">Return</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
