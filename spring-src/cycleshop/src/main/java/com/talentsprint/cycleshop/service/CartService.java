@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.talentsprint.cycleshop.entity.Cart;
+import com.talentsprint.cycleshop.entity.Checkout;
 import com.talentsprint.cycleshop.entity.Cycle;
 import com.talentsprint.cycleshop.entity.Items;
 import com.talentsprint.cycleshop.entity.User;
@@ -20,6 +21,7 @@ import com.talentsprint.cycleshop.entity.User;
 import com.talentsprint.cycleshop.repository.CartRepository;
 import com.talentsprint.cycleshop.repository.CycleRepository;
 import com.talentsprint.cycleshop.repository.UserRepository;
+import com.talentsprint.cycleshop.repository.checkOutRepository;
 
 
 
@@ -35,8 +37,8 @@ public class CartService {
     @Autowired
     private UserRepository userRepository;
 
-    // @Autowired
-    // private BagRepository bagRepository;
+    @Autowired
+    private checkOutRepository checkOutRepository;
 
     public List<Items> addToCart(int cycleId,int quantity,String name){
 
@@ -138,5 +140,48 @@ public class CartService {
         }
         return new ArrayList<>(); 
     }
+
+    public List<Items> checkOut(String name){
+
+        User user = userRepository.findByName(name).get();
+        Optional<Cart> cart = cartRepository.findByUser(user);
+        List<Items> items = new ArrayList<>();
+        if(cart.isPresent()){
+            Optional<Checkout> checkout = checkOutRepository.findByUser(user);
+            if(checkout.isPresent()){
+                checkout.get().getItems().addAll(cart.get().getItems());
+                checkout.get().setTotalPrice(addTotalPrice(cart.get()));
+                items = checkout.get().getItems();
+                checkOutRepository.save(checkout.get());
+            }
+
+            else{
+                Checkout checkout2 = new Checkout();
+                checkout2.setUser(user);
+                checkout2.getItems().addAll(cart.get().getItems());
+                items = checkout2.getItems();
+                checkOutRepository.save(checkout2);
+            }
+
+            cartRepository.delete(cart.get());
+            return items;
+
+        }
+        return null;
+
+    }
+    private int addTotalPrice(Cart cart) {
+        System.out.println(cart.getItems());
+        List<Items> item = cart.getItems();
+        int total_price = 0;
+        for(Items i : item)
+        {
+            int temp_price = i.getQuantity() * i.getCycle().getPrice();
+            total_price = total_price + temp_price;
+        }
+        System.out.println(total_price);
+        return total_price;
+    }
+
 
 }

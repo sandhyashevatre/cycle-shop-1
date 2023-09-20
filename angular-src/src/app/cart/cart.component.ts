@@ -26,6 +26,8 @@ export class CartComponent {
     );
 }
 
+
+
 totalPrice : number =0;
 calculateTotalPrice() {
   this.totalPrice = this.cartItems.reduce(
@@ -33,4 +35,17 @@ calculateTotalPrice() {
     0
   );
 }
+
+checkout() {
+  this.cycleService.checkout().subscribe(
+    (response) => {
+      console.log('Checkout successful', response);
+
+      this.ngOnInit();
+    },
+    (error) => {
+      console.error('Error during checkout', error);
+    }
+  );
+  }
 }
