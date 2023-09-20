@@ -1,6 +1,5 @@
-<!-- return.component.html -->
-<div>
-  <h2>Return Cycles</h2>
+<!-- <div>
+  <h2>Cart</h2>
   <table>
     <thead>
       <tr>
@@ -8,20 +7,31 @@
         <th>Brand</th>
         <th>Stock</th>
         <th>Num Borrowed</th>
-        <th>Count to Return</th>
+        <th>Price</th>
+        <th>Total price of the cycle</th>
+        <th>Count to Delete</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cycle of cycles">
-        <td>{{ cycle.id }}</td>
-        <td>{{ cycle.brand }}</td>
+        <td>{{ cycle.cycleId }}</td>
+        <td>{{ cycle.cycleName }}</td>
         <td>{{ cycle.stock }}</td>
         <td>{{ cycle.numBorrowed }}</td>
-        <!-- <td><input type="number" [(ngModel)]="cycle.countToReturn"></td> -->
+        <td>{{cycle.price}}</td>
+        <td>{{ cycle.numBorrowed * cycle.price }}</td>
         <td><input type="number" #count required [defaultValue]="1"></td>
-        <td><button (click)="returnCycle(cycle.id,count.value)">Return</button></td>
+        <td><button (click)="returnCycle(cycle.cycleId,count.value)">Return</button></td>
       </tr>
     </tbody>
+    <tr>
+      <td colspan="5"></td>
+      <td>Total Cart Price:</td>
+      {{calculateTotalPrice() }}
+      <td>{{totalPrice}}</td>
+      <td></td>
+    </tr>
+    
   </table>
-</div>
+</div> -->

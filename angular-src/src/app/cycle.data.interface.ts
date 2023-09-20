@@ -3,26 +3,17 @@ export interface CycleData {
     count: number;
   }
 
-
-// export interface addNewCycle {
-
-//     brand: string;
-
-//     stock: number;
-
-// }
-
-
 export interface CycleRecord {
 
-    id: number;
+  cycleId: number;
 
-    brand: string;
+  cycleName: string;
 
     stock: number;
 
     numBorrowed: number;
 
     numAvailable: number;
+    price : number;
 
 }

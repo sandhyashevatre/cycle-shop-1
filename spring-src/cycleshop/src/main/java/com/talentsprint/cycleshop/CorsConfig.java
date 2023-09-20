@@ -16,23 +16,11 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class CorsConfig implements CorsConfigurationSource {
 
- 
-
- 
-
- 
 
     @Override
-
- 
-
     @Nullable
 
- 
-
     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-
- 
 
         CorsConfiguration config = new CorsConfiguration();
 

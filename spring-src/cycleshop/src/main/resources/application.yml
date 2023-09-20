@@ -1,16 +1,20 @@
 spring:
   datasource:
-    url: 'jdbc:mysql://localhost:3306/cycle-data'
-    username: SandhyaShevatre
-    password: sandhya@123
-#  jpa:
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.MySQLDialect
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
+    url: jdbc:mysql://localhost:3306/cycle-data
+    username: saisidharthak
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+ 
 
 jwt:
-  private.key: classpath:app.key
-  public.key: classpath:app.pub
+  private:
+    key: classpath:app.key
+  public:
+    key: classpath:app.pub

@@ -6,19 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.talentsprint.cycleshop.dto.CycleJsonInputIdCount;
+import com.talentsprint.cycleshop.entity.Cart;
 import com.talentsprint.cycleshop.entity.Cycle;
+import com.talentsprint.cycleshop.entity.Items;
 import com.talentsprint.cycleshop.exception.CycleNotFoundException;
 import com.talentsprint.cycleshop.exception.InsufficientStockException;
 import com.talentsprint.cycleshop.exception.InvalidReturnCountException;
+import com.talentsprint.cycleshop.service.CartService;
 import com.talentsprint.cycleshop.service.CycleService;
 
 @RestController
@@ -31,6 +37,8 @@ public class CycleRestController {
     @Autowired
     private CycleService cycleService;
 
+	@Autowired
+	private CartService cartService;
 
     @PostMapping("/{id}/borrow")
     public ResponseEntity<String> borrowCycle(
@@ -47,6 +55,8 @@ public class CycleRestController {
 //        }
     	try {
     	    cycleService.borrowCycle(IdCount.getId(), IdCount.getCount());
+			//cartService.addToCart(IdCount.getId(), IdCount.getCount());
+
     	    return ResponseEntity.ok("Cycle borrowed successfully.");
     	} catch (CycleNotFoundException e) {
     	    return ResponseEntity.notFound().build();
@@ -104,4 +114,20 @@ public class CycleRestController {
 //    	return ResponseEntity.ok(cycleService.listAvailableCycles());
     	return ResponseEntity.ok(cycleService.listCycles());
     }
+
+  @PostMapping("/{id}/add-cart")
+    public List<Items> addToCart(@PathVariable int id,@RequestParam int count){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	String username = authentication.getName();
+        return cartService.addToCart(id, count,username);
+    }
+
+	@GetMapping("/items")
+    public List<Items> getAllCartItems() {
+		System.out.println("101");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	String username = authentication.getName();
+        return cartService.getAllCartItems(username);
+    }
+
 }
