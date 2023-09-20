@@ -8,15 +8,17 @@
       <th>Stock</th>
       <th>Num Borrowed</th>
       <th>Num Available</th>
+      <th>Price</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let cycle of cycles">
-      <td>{{ cycle.id }}</td>
-      <td>{{ cycle.brand }}</td>
+      <td>{{ cycle.cycleId }} <img src="assets/images/brand.png" alt="cycle1" width="150" height="100"></td>
+      <td>{{ cycle.cycleName }}</td>
       <td>{{ cycle.stock }}</td>
       <td>{{ cycle.numBorrowed }}</td>
       <td>{{ cycle.numAvailable }}</td>
+      <td>{{cycle.price}}</td>
     </tr>
   </tbody>
 </table>

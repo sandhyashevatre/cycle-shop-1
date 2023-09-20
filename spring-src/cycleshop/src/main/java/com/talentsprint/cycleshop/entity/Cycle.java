@@ -12,12 +12,13 @@ public class Cycle {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
-    private String brand;
+    private int cycleId;
+    
     private int stock;
+    private String cycleName;
     private int numBorrowed;
-
-    public int getNumAvailable() {
+    private int price;
+    public  int getNumAvailable() {
         return stock - numBorrowed;
     }
 

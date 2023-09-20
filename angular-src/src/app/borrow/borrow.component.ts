@@ -9,12 +9,12 @@ import { CycleData, CycleRecord } from '../cycle.data.interface';
   styleUrls: ['../list-cycles/list-cycles.component.css']
 })
 export class BorrowComponent implements OnInit {
-  borrowData: CycleData;
+  cartData: CycleData;
   borrowResult = '';
   cycles: CycleRecord[] = [];
   
   constructor(private cycleService: CycleService) {
-    this.borrowData = {
+    this.cartData = {
       id:0,
       count:0
     };
@@ -33,23 +33,19 @@ export class BorrowComponent implements OnInit {
 
   }
 
-  borrowCycle(cycleId:number, cycleCount:string) {
-    this.borrowData.id = cycleId;
-    this.borrowData.count = parseInt(cycleCount);
-    this.cycleService.borrowCycle(this.borrowData).subscribe(
+  addCart(cycleId:number, cycleCount:string) {
+    this.cartData.id = cycleId;
+    this.cartData.count = parseInt(cycleCount);
+    this.cycleService.addToCart(this.cartData.id, this.cartData.count).subscribe(
       (response) => {
-        this.borrowResult = 'Cycle borrowed successfully.';
+        console.log('Added to cart:', response);
         this.ngOnInit();
       },
       (error) => {
-        if (error.status === 404) {
-          this.borrowResult = 'Cycle not found.';
-        } else if (error.status === 400) {
-          this.borrowResult = 'Insufficient stock.';
-        } else {
-          this.borrowResult = 'An error occurred.';
-        }
+        console.error('Error adding to cart:', error);
       }
+      
     );
+    
   }
 }

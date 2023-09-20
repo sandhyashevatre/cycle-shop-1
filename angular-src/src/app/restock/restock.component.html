@@ -1,3 +1,101 @@
+<style>
+  table {
+
+width: 100%;
+
+border-collapse: collapse;
+
+margin-top: 20px;
+
+}
+
+
+
+/* Style table header */
+
+thead {
+
+background-color: #333;
+
+color: white;
+
+}
+
+
+
+th, td {
+
+padding: 10px;
+
+text-align: left;
+
+}
+
+
+
+/* Style table rows */
+
+tr:nth-child(even) {
+
+background-color: #f2f2f2;
+
+}
+
+
+
+/* Style the restock button */
+
+button {
+
+background-color: #0a8f38;
+
+color: white;
+
+border: none;
+
+padding: 8px 12px;
+
+cursor: pointer;
+
+}
+
+
+
+/* Style the input field */
+
+input[type="number"] {
+
+padding: 8px;
+
+width: 50px;
+
+}
+
+
+
+/* Center the table */
+
+div {
+
+text-align: center;
+
+}
+
+
+
+/* Style the heading */
+
+h1 {
+
+font-size: 24px;
+
+text-align: center;
+
+margin-top: 20px;
+
+}
+</style>
+
 <h1>Restock Cycles</h1>
 
 <!-- restock.component.html -->
@@ -10,19 +108,22 @@
         <th>Brand</th>
         <th>Stock</th>
         <th>Available Cycles</th>
+        <th>Price</th>
         <th>Count to Restock</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cycle of cycles">
-        <td>{{ cycle.id }}</td>
-        <td>{{ cycle.brand }}</td>
+        <td>{{ cycle.cycleId }}</td>
+        <td>{{ cycle.cycleName }}</td>
         <td>{{ cycle.stock }}</td>  
         <td>{{ cycle.numAvailable }}</td>
+        <td>{{cycle.price}}</td>
+
         <!-- <td><input type="number" [(ngModel)]="cycle.countToRestock"></td> -->
         <td><input type="number" #count required [defaultValue]="1"></td>
-        <td><button (click)="restockCycle(cycle.id,count.value)">Restock</button></td>
+        <td><button (click)="restockCycle(cycle.cycleId,count.value)">Restock</button></td>
       </tr>
     </tbody>
   </table>
