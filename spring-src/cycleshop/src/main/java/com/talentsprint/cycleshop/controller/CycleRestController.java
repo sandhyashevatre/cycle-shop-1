@@ -1,5 +1,6 @@
 package com.talentsprint.cycleshop.controller;
 
+import java.util.ArrayList;
 import java.util.List; 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,4 +131,16 @@ public class CycleRestController {
         return cartService.getAllCartItems(username);
     }
 
+	@PostMapping("/checkout")
+    public List<Items> checkOut() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	String name = authentication.getName();
+        List<Items> items = cartService.checkOut(name);
+        if (items != null) {
+            return items;
+        } else {
+            
+            return new ArrayList<>(); 
+        }
+    }
 }

@@ -86,4 +86,13 @@ export class CycleService {
 
     return this.http.get<CartItem[]>(`${this.apiUrl}/items`,{headers : headers});
   }
+
+  checkout(): Observable<CartItem[]> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+
+    return this.http.post<CartItem[]>(`${this.apiUrl}/checkout`, {}, { headers: headers });
+  }
+ 
 }

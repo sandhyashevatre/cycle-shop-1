@@ -55,11 +55,13 @@
         <tr *ngFor="let cartItem of cartItems" class="cart-item">
           <td>{{ cartItem.cycle.cycleName }}</td>
           <td>{{ cartItem.quantity }}</td>
-          <td>{{ cartItem.cycle.price }} Rs</td>
+          <td>{{ cartItem.cycle.price| currency:'INR' }}</td>
         </tr>
       </tbody>
       {{calculateTotalPrice()}}
-      <p>Total Price: {{ totalPrice}} Rs</p>
+      <p>Total Price: {{ totalPrice| currency:'INR' }}</p>
     </table>
+    <button (click)="checkout()">Checkout</button>
+
   </div>
   
