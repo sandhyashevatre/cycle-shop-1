@@ -65,7 +65,7 @@ export class CycleService {
   }
 
   clearToken() {
-    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem('token');
   }
 
   addToCart(cycleId: number,count: number): Observable<any>
