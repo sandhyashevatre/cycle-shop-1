@@ -17,13 +17,8 @@ public class Items {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
- 
-
     @ManyToOne
     @JoinColumn(name = "cycle_id")
     private Cycle cycle;
-
- 
-
     private int quantity;
 }

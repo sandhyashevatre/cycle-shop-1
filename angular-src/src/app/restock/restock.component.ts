@@ -5,8 +5,8 @@ import { CycleData, CycleRecord } from '../cycle.data.interface';
 @Component({
   selector: 'app-restock',
   templateUrl: './restock.component.html',
-  // styleUrls: ['./restock.component.css']
-  styleUrls: ['../list-cycles/list-cycles.component.css']
+  styleUrls: ['./restock.component.css']
+  //styleUrls: ['../list-cycles/list-cycles.component.css']
 })
 export class RestockComponent implements OnInit {
   restockData: CycleData;

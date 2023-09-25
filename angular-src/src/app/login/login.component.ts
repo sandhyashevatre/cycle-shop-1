@@ -20,18 +20,4 @@ export class LoginComponent {
     this.authService.login(this.username,this.password).subscribe();
     this.router.navigate(['/list-data']);
   }
-
-  // onSubmit() {
-  //   this.cycleService.login(this.username, this.password).subscribe({
-  //     next: (token: string) => {
-  //       // Handle successful login - store the token, redirect, etc.
-  //       this.cycleService.saveToken(token);
-  //       console.log(token);
-  //     },
-  //     error: (error) => {
-  //       // Handle login error, e.g., display an error message
-  //       this.loginError = true;
-  //     }
-  //   });
-  // }
 }

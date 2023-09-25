@@ -1,4 +1,4 @@
-/* Style the container */
+
 .navbar {
     background-color: #1976d2;
     display: flex;
@@ -7,37 +7,29 @@
     margin-top: 5rem;
   }
   
-  /* Style the links within the .navbar */
   .navbar > a {
     color: #fff;
     text-decoration: none;
     margin-left: 15px;
   }
-  
-  /* Style the links on hover */
+
   .navbar > a:hover {
     text-decoration: underline;
   }
-  
-  /* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* Global styles */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   color: #333;
   background-color: #fff;
 }
-
-/* Toolbar styles */
 .toolbar {
-  background-color: #1976d2;
-  color: white;
+  background-color: #5596db;
+  color: rgb(10, 9, 11);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,8 +73,6 @@ body {
 .toolbar-links a:hover {
   opacity: 0.8;
 }
-
-/* Content container styles */
 .content {
   max-width: 960px;
   margin: 82px auto 32px;
@@ -91,8 +81,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* Card styles */
 .card {
   border: 1px solid #eee;
   background-color: #fafafa;
@@ -156,6 +144,7 @@ body {
   }
 
   .card.highlight-card span {
+    font-size: 4em;
     margin-left: 72px;
   }
 }

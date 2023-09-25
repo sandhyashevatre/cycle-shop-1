@@ -11,7 +11,6 @@ import { CartItem } from './cart-item';
 export class CycleService {
 
   private apiUrl = 'http://localhost:8080/api/cycles'; 
-  private cartUrl = 'http://localhost:8080/api';
   private tokenKey: string = 'auth-token';
 
   constructor(private http: HttpClient) {}
@@ -26,42 +25,23 @@ export class CycleService {
 
   borrowCycle(data: CycleData): Observable<string> {
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-    return this.http.post<string>(`${this.apiUrl}/${data.id}/borrow`, data, { headers: headers });
+
+    return this.http.post<string>(`${this.apiUrl}/${data.id}/borrow`, data, { headers: this.getHeader() });
   }
 
   returnCycle(data: any): Observable<string> {
-
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-
-    return this.http.post<string>(`${this.apiUrl}/${data.id}/return`, data, { headers: headers});
+    
+    return this.http.post<string>(`${this.apiUrl}/${data.id}/return`, data, { headers: this.getHeader() });
   }
 
   restockCycle(data: any): Observable<string> {
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-    return this.http.post<string>(`${this.apiUrl}/${data.id}/restock`, data, {headers: headers});
+
+    return this.http.post<string>(`${this.apiUrl}/${data.id}/restock`, data, {headers: this.getHeader() });
   }
 
   listAvailableCycles(): Observable<CycleRecord[]> {
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-    console.log(localStorage.getItem('token'));
-    return this.http.get<CycleRecord[]>(`${this.apiUrl}/list-data`,{headers : headers});
-  }
 
-  saveToken(token: string) {
-    localStorage.setItem(this.tokenKey, token);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    return this.http.get<CycleRecord[]>(`${this.apiUrl}/list-data`,{headers : this.getHeader()});
   }
 
   clearToken() {
@@ -70,29 +50,35 @@ export class CycleService {
 
   addToCart(cycleId: number,count: number): Observable<any>
   {
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-    console.log(localStorage.getItem('token'));
-    return this.http.post(`${this.apiUrl}/${cycleId}/add-cart?count=${count}`, {}, {headers : headers});
+
+    return this.http.post(`${this.apiUrl}/${cycleId}/add-cart?count=${count}`, {}, {headers : this.getHeader()});
   }
   
   getAllCartItems(): Observable<CartItem[]> { 
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + localStorage.getItem('token') 
-    });
-        console.log(localStorage.getItem('token'));
-
-    return this.http.get<CartItem[]>(`${this.apiUrl}/items`,{headers : headers});
+    return this.http.get<CartItem[]>(`${this.apiUrl}/items`,{headers : this.getHeader()});
   }
 
   checkout(): Observable<CartItem[]> {
+
+    return this.http.post<CartItem[]>(`${this.apiUrl}/checkout`, {}, { headers: this.getHeader() });
+  }
+
+  removeFromCart(cycleId: number, quantity: number): Observable<any> {
+
+   return this.http.post(`${this.apiUrl}/${cycleId}/remove-cart?quantity=${quantity}`, {}, { headers: this.getHeader() ,responseType: 'text'});
+  }
+ 
+  getHeader()
+  {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
-
-    return this.http.post<CartItem[]>(`${this.apiUrl}/checkout`, {}, { headers: headers });
+    return headers;
   }
- 
+
+  hasRole(role: string): boolean {
+    const userRole = localStorage.getItem('role');
+    return userRole === role;
+  }
 }

@@ -14,6 +14,7 @@ import { CycleService } from './cycle.service';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RemoveFromCartComponent } from './remove-from-cart/remove-from-cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LogoutComponent } from './logout/logout.component';
     RestockComponent,
     LoginComponent,
     CartComponent,
-    LogoutComponent
+    LogoutComponent,
+    RemoveFromCartComponent
   ],
   imports: [
     BrowserModule,

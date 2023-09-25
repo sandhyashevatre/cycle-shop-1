@@ -1,46 +1,4 @@
-<style>
-    /* Style the outer container */
-.cart-container {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  width: 80%; /* Adjust the width as needed */
-  margin: 0 auto; /* Center the container */
-}
 
-/* Style the table */
-.cart-item-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-/* Style table headers */
-.cart-item-table th {
-  background-color: #f2f2f2;
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Style table rows */
-.cart-item-table tr {
-  border-bottom: 1px solid #ddd;
-}
-
-/* Style alternating row background colors */
-.cart-item-table tr:nth-child(even) {
-  background-color: #f5f5f5;
-}
-
-/* Style table cells */
-.cart-item-table td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-</style>
 <div class="cart-container">
     <h1>Your Cart</h1>
     <table class="cart-item-table">
@@ -49,6 +7,7 @@
           <th>Cycle Name</th>
           <th>Quantity</th>
           <th>Price</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -56,12 +15,13 @@
           <td>{{ cartItem.cycle.cycleName }}</td>
           <td>{{ cartItem.quantity }}</td>
           <td>{{ cartItem.cycle.price| currency:'INR' }}</td>
+          <td><button (click)="removeItemsFromCart(cartItem.cycle.cycleId)">Remove From Cart</button></td> 
         </tr>
       </tbody>
       {{calculateTotalPrice()}}
       <p>Total Price: {{ totalPrice| currency:'INR' }}</p>
     </table>
-    <button (click)="checkout()">Checkout</button>
+    <button (click)="checkout()">Check-Out</button>
 
   </div>
   

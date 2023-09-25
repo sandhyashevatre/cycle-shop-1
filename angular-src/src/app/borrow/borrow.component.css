@@ -1,0 +1,107 @@
+body{
+    background-color: blue;
+}
+/* Apply basic styles to the table */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin-top: 20px;
+
+  border: 1px solid #ccc;
+}
+
+/* Style table header */
+
+thead {
+  background-color: #333;
+
+  color: white;
+}
+
+th,
+td {
+  padding: 10px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #ddd;
+}
+
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+button {
+  background-color: #4c14cf;
+
+  color: white;
+
+  border: none;
+
+  padding: 8px 12px;
+
+  cursor: pointer;
+}
+
+
+input[type="number"] {
+  padding: 8px;
+
+  width: 50px;
+}
+
+
+div {
+  text-align: center;
+}
+
+
+h2 {
+  font-size: 24px;
+
+  text-align: center;
+
+  margin-top: 20px;
+}
+
+
+div {
+  margin-top: 20px;
+}
+
+
+tr:hover {
+  background-color: #ddd;
+}
+
+
+table {
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+}
+
+
+td:first-child {
+  font-weight: bold;
+}
+
+
+td:last-child {
+  text-align: center;
+}
+
+
+input[type="number"] {
+  padding: 8px;
+}
+
+
+button:hover {
+  background-color: #45a049;
+}
