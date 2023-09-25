@@ -1,4 +1,4 @@
-/* Style the container */
+
 .navbar {
     background-color: #1976d2;
     display: flex;
@@ -7,15 +7,151 @@
     margin-top: 5rem;
   }
   
-  /* Style the links within the .navbar */
   .navbar > a {
     color: #fff;
     text-decoration: none;
     margin-left: 15px;
   }
-  
-  /* Style the links on hover */
+
   .navbar > a:hover {
     text-decoration: underline;
   }
-  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+}
+.toolbar {
+  background-color: #5596db;
+  color: rgb(10, 9, 11);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.toolbar img {
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-title {
+  font-weight: 600;
+}
+
+.toolbar-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.toolbar-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.toolbar-links a:hover {
+  opacity: 0.8;
+}
+.content {
+  max-width: 960px;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  border-radius: 4px;
+  padding: 16px;
+  width: 200px;
+  margin: 0 8px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.card .material-icons path {
+  fill: #888;
+}
+
+.card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card-small {
+  height: 16px;
+  width: 168px;
+}
+
+.card.highlight-card {
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: auto;
+  min-width: 30%;
+  position: relative;
+}
+
+.card.highlight-card span {
+  margin-left: 60px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .card-container > *:not(.circle-link),
+  .terminal {
+    width: 100%;
+  }
+
+  .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+  }
+
+  .card.highlight-card span {
+    font-size: 4em;
+    margin-left: 72px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  svg#rocket-smoke {
+    display: none;
+    visibility: hidden;
+  }
+}

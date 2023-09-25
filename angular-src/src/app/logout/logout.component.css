@@ -1,0 +1,23 @@
+/* Apply styles to the button element */
+button {
+  /* Define background color */
+  background-color: #007bff; /* Replace with your desired color */
+  
+  /* Define text color */
+  color: #fff; /* Replace with your desired color */
+  
+  /* Add padding to the button */
+  padding: 10px 20px;
+  
+  /* Add border and border-radius for a button-like appearance */
+  border: none;
+  border-radius: 4px;
+  
+  /* Add cursor pointer on hover to indicate interactivity */
+  cursor: pointer;
+}
+
+/* Style the button when hovered over */
+button:hover {
+  background-color: #0056b3; /* Replace with your desired hover color */
+}

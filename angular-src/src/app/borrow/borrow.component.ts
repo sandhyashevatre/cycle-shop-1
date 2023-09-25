@@ -5,8 +5,7 @@ import { CycleData, CycleRecord } from '../cycle.data.interface';
 @Component({
   selector: 'app-borrow',
   templateUrl: './borrow.component.html',
-  // styleUrls: ['./borrow.component.css']
-  styleUrls: ['../list-cycles/list-cycles.component.css']
+  styleUrls: ['./borrow.component.css']
 })
 export class BorrowComponent implements OnInit {
   cartData: CycleData;

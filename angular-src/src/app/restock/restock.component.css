@@ -1,95 +1,66 @@
 table {
+  width: 100%;
 
-    width: 100%;
+  border-collapse: collapse;
 
-    border-collapse: collapse;
+  margin-top: 20px;
+}
 
-    margin-top: 20px;
+/* Style table header */
 
-  }
+thead {
+  background-color: #333;
 
+  color: white;
+}
 
+th,
+td {
+  padding: 10px;
 
-  /* Style table header */
+  text-align: left;
+}
 
-  thead {
+/* Style table rows */
 
-    background-color: #333;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-    color: white;
+/* Style the restock button */
 
-  }
+button {
+  background-color: #0a8f38;
 
+  color: white;
 
+  border: none;
 
-  th, td {
+  padding: 8px 12px;
 
-    padding: 10px;
+  cursor: pointer;
+}
 
-    text-align: left;
+/* Style the input field */
 
-  }
+input[type="number"] {
+  padding: 8px;
 
+  width: 50px;
+}
 
+/* Center the table */
 
-  /* Style table rows */
+div {
+  text-align: center;
+}
 
-  tr:nth-child(even) {
+/* Style the heading */
 
-    background-color: #f2f2f2;
+h1 {
+  font-size: 24px;
 
-  }
+  text-align: center;
 
-
-
-  /* Style the restock button */
-
-  button {
-
-    background-color: #0a8f38;
-
-    color: white;
-
-    border: none;
-
-    padding: 8px 12px;
-
-    cursor: pointer;
-
-  }
-
-
-
-  /* Style the input field */
-
-  input[type="number"] {
-
-    padding: 8px;
-
-    width: 50px;
-
-  }
-
-
-
-  /* Center the table */
-
-  div {
-
-    text-align: center;
-
-  }
-
-
-
-  /* Style the heading */
-
-  h1 {
-
-    font-size: 24px;
-
-    text-align: center;
-
-    margin-top: 20px;
-
-  }
+  margin-top: 20px;
+}

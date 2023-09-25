@@ -13,25 +13,13 @@ export class ListCyclesComponent implements  OnInit {
   constructor(private cycleService: CycleService) {
   }
 
-  ngOnInit() {
-    this.getCycles();
+  ngOnInit(): void {
+      this.getCycles();
   }
-
   getCycles() {
     this.cycleService.listAvailableCycles().subscribe((data) => {
       this.cycles = data;
     });
   
-    // addToCart(cycleId: number) {
-    //   const count = 1; 
-    //   this.cycleService.addToCart(cycleId, count).subscribe(
-    //     (response) => {
-    //       console.log('Added to cart:', response);
-    //     },
-    //     (error) => {
-    //       console.error('Error adding to cart:', error);
-    //     }
-    //   );
-    // }
   }
 } 
